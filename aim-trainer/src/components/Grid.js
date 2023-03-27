@@ -2,8 +2,8 @@ import { useState } from "react";
 
 const gridContainerStyle = {
   display: "grid",
-  gridTemplateColumns: "repeat(4,150px)",
-  gridTemplateRows: "repeat(4,150px)",
+  gridTemplateColumns: "repeat(4,120px)",
+  gridTemplateRows: "repeat(4,120px)",
   gap: "5px",
 };
 

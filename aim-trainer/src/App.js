@@ -90,7 +90,7 @@ const App = () => {
     setAccuracy(100);
   };
   return (
-    <div className="game-container">
+    <div>
       <h1>Aim Trainer</h1>
       <h2>Time left: {timeLeft}</h2>
       <Grid grid={squares} onSquareClick={onSquareClick} />
