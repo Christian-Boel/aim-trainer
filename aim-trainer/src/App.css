@@ -1,0 +1,44 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.grid-square {
+  border: 1px solid #ccc;
+  width: 150px;
+  height: 150px;
+}
+
+.grid-square.white {
+  background-color: white;
+}
+
+.grid-square.white:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+.grid-square.black {
+  background-color: black;
+}
+
+.grid-square.black:hover {
+  background-color: darkgray;
+}
+
+.reset-button {
+  width: 100px;
+  text-align: center;
+  font-size: 16px;
+}
