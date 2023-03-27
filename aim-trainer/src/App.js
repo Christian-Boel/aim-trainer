@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "./components/Grid";
 import "./App.css";
 
 const initialGrid = () => {
-  const grid = new Array(4).fill(null).map(() => new Array(4).fill(false));
+  const grid = new Array(4).fill().map(() => new Array(4).fill(false));
   return grid;
 };
 
 const randomizeBlackSquares = (grid, count = 0, lastClickedSquare = null) => {
-  const newGrid = JSON.parse(JSON.stringify(grid));
+  const newGrid = [...grid];
   let blackSquares = 3;
 
   while (count < blackSquares) {
@@ -29,7 +29,7 @@ const randomizeBlackSquares = (grid, count = 0, lastClickedSquare = null) => {
 };
 
 const App = () => {
-  const [squares, setSquares] = useState(initialGrid());
+  const [squares, setSquares] = useState(randomizeBlackSquares(initialGrid()));
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
@@ -39,23 +39,19 @@ const App = () => {
   const [scorePerMinute, setScorePerMinute] = useState(0);
 
   useEffect(() => {
-    if (timeLeft > 0 && !gameOver) {
+    if (!gameOver) {
       const timer = setInterval(() => {
         setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [timeLeft, gameOver]);
+  }, [gameOver]);
 
   useEffect(() => {
     if (timeLeft <= 0) {
       setGameOver(true);
     }
   }, [timeLeft]);
-
-  useEffect(() => {
-    setSquares(randomizeBlackSquares(squares));
-  }, []);
 
   const handleDurationChange = (event) => {
     setSelectedDuration(event.target.value);

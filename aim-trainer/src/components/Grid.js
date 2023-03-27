@@ -1,15 +1,8 @@
 import { useState } from "react";
 
-const gridContainerStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(4,120px)",
-  gridTemplateRows: "repeat(4,120px)",
-  gap: "5px",
-};
-
 const Grid = ({ grid, onSquareClick }) => {
   return (
-    <div style={gridContainerStyle}>
+    <div className={"grid-container"}>
       {grid.map((row, rowIndex) =>
         row.map((isBlack, colIndex) => (
           <div
